@@ -11,9 +11,9 @@ module SimpleHashtag
     # https://github.com/twitter/twitter-text-rb/blob/master/lib/twitter-text/regex.rb
     
     HASHTAG_REGEX = /(#[[:graph:]]+)/i
-
+    
     def self.find_by_name(name)
-      Hashtag.where("lower(name) =?", name.downcase).first
+      Hashtag.where("lower(name) =?", name.to_s.downcase).first
     end
     def self.find_or_create_by_name(name, &block)
       find_by_name(name) || create(name: name, &block)
@@ -21,11 +21,11 @@ module SimpleHashtag
 
 
     def name=(val)
-      write_attribute(:name, val.downcase)
+      write_attribute(:name, val.to_s.downcase)
     end
 
     def name
-      read_attribute(:name).downcase
+      read_attribute(:name).to_s.downcase
     end
 
     def hashtaggables
