@@ -13,7 +13,7 @@ module SimpleHashtag
     HASHTAG_REGEX = /(#[[:graph:]]+)/i
     
     def self.find_by_name(name)
-      Hashtag.where("lower(name) =?", name).first
+      Hashtag.where("lower(name) =?", name.to_s.downcase).first
     end
     def self.find_or_create_by_name(name, &block)
       find_by_name(name) || create(name: name, &block)
@@ -21,11 +21,11 @@ module SimpleHashtag
 
 
     def name=(val)
-      write_attribute(:name, val)
+      write_attribute(:name, val.downcase)
     end
 
     def name
-      read_attribute(:name)
+      read_attribute(:name).downcase
     end
 
     def hashtaggables
