@@ -21,11 +21,11 @@ module SimpleHashtag
 
 
     def name=(val)
-      write_attribute(:name, val.downcase)
+      write_attribute(:name, val.downcase!)
     end
 
     def name
-      read_attribute(:name).to_s.downcase
+      read_attribute(:name).downcase
     end
 
     def hashtaggables
