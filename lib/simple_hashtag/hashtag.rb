@@ -10,7 +10,7 @@ module SimpleHashtag
     # this is how Twitter does it:
     # https://github.com/twitter/twitter-text-rb/blob/master/lib/twitter-text/regex.rb
     
-    HASHTAG_REGEX = /(#(?!([[:graph:]]+)(?:\s|$))/i
+    HASHTAG_REGEX = /(#[[:graph:]]+)/i
 
 
     def self.find_by_name(name)
